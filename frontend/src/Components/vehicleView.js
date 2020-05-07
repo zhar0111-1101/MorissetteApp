@@ -5,6 +5,7 @@ import { Card } from 'react-bootstrap'
 const VehicleView = ({
     product,
     showViewProductButton = true,
+    addToCartButton = true,
     setRun = f => f,
     run = undefined
     // changeCartSize
@@ -20,6 +21,17 @@ const VehicleView = ({
           )
         );
       };
+
+    const addToCart = addToCartButton => {
+        return (
+            addToCartButton && (
+                <Link to="/cart" className="mr-2">
+                    <button className="btn btn-outline-primary mt-2 mb-2 card-btn-1">Add to Cart</button>
+                </Link>
+            )
+        );
+    };
+
       const showStock = quantity => {
         return quantity > 0 ? (
           <span className="badge badge-primary badge-pill">In Stock </span>
@@ -50,6 +62,7 @@ const VehicleView = ({
             <br />
     
             {showViewButton(showViewProductButton)}
+            {addToCart(addToCartButton)}
 
           {/* </div> */}
         </div>
